@@ -14,7 +14,7 @@ module.exports = {
 			filename: 'index.html',
 			path: './dist',
 			template: './src/index.html',
-			favicon: 'src/assets/favicon.ico'
+			favicon: './src/assets/flag.png'
 		})],
 	devtool: 'inline-source-map',
 	devServer: {
@@ -36,7 +36,18 @@ module.exports = {
 					}
 				],
 				exclude: /node_modules/
-			}
+			},
+			{
+				test: /\.png$/,
+				use:[
+					{
+						loader: 'file-loader',
+						options: {
+							name: 'texture-[name]-[hash].[ext]'
+						}
+					}
+				]
+			},
 		]
 	},
 	resolve: {
